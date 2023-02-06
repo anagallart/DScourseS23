@@ -1,0 +1,85 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{Problem Set 2: Data Science Toolbox}
+\author{Ana Gallart}
+
+\begin{document}
+\maketitle
+
+
+\begin{itemize}
+
+\item{Measurement}
+
+Measurements are used to construct insights and policies in quantitative research.
+
+
+\item{Statistical programming languages}
+
+We will use R, Python, and Julia in this class. Other languages used for statistical analysis include Stata, SAS, SPSS, Matlab, and JavaScipt. The language that will best suit your needs may vary depending on your field.
+
+
+\item{Web Scraping}
+
+Web scraping is the ability to use the publicly accessible data from web pages to inform a data scientist's objective. 
+\begin{itemize}
+\item{APIs: Application program interfaces are like rules you have to follow to gt the data from web pages. Companies use them to guard their data.} 
+
+\item{Parsing: Downloading the HTML code is the way to web scrape web pages that don't have APIs. It is risky for websites that have APIs because overdoing this could provoke them to block your access.}
+    
+\end{itemize}
+
+
+\item{RDDs}
+
+Resilient Distributed Data sets (RDDs) solve the issue of handling large data sets that may not fit on a hard drive. Using a software, huge data sets can be chopped into manageable chunks, executing actions in parallel on the chunks of data. RDDs are build to withstand disruptions in the cluster of computers, allowing for data to easily be transferred to another machine in the case of machine failure.
+
+\item {SQL}
+
+Structured Query Language (SQL) is a relational software that makes data more usable. 
+
+\item{Visualization}
+
+Visualization allows people to see data in different ways that help analysis. 
+\begin{itemize}
+    \item {ggplot2 package in R}
+    
+    \item{matplotlib in Python}
+
+\item{Plots.jl in Julia}
+
+\item{Tableau: software company with interactive data visualization products}
+
+\end{itemize}
+
+
+\item{Modeling}
+
+After collecting and cleaning your data, it's time to do statistical modeling. With the following goals- Use data to:
+
+\begin{itemize}
+
+\item{Test theories}
+
+\item{Predict behavior}
+
+\item{Explain behavior (requires causality)}
+\end{itemize}
+
+
+\end{itemize}
+
+\end{document}
