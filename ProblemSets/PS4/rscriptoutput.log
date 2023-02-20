@@ -1,0 +1,5 @@
+/home/ouecon008/DScourseS23/ProblemSets/PS4
+Sun Feb 19 21:20:17 CST 2023
+export LSCRATCH=/lscratch/14201143
+slurmstepd: error: acct_gather_profile/influxdb _send_data: curl_easy_perform failed to send data (discarded). Reason: Couldn't resolve host name
+slurmstepd: error: acct_gather_profile/influxdb _send_data: curl_easy_perform failed to send data (discarded). Reason: Couldn't resolve host name
