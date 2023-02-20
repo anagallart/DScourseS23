@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Sun Feb 19 22:47:24 CST 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0186-6d25-e246-00001c9fc5a0 
+on database directory memory:/home/ouecon008/DScourseS23/ProblemSets/PS4/databaseName=metastore_db with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@5c29bfd 
+Loaded from file:/home/ouecon008/spark/spark-3.0.0-bin-hadoop3.2/jars/derby-10.12.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=11.0.2+9
+user.dir=/home/ouecon008/DScourseS23/ProblemSets/PS4
+os.name=Linux
+os.arch=amd64
+os.version=3.10.0-1127.el7.x86_64
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

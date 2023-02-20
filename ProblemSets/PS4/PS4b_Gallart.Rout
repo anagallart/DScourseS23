@@ -1,0 +1,126 @@
+
+R version 4.0.2 (2020-06-22) -- "Taking Off Again"
+Copyright (C) 2020 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> library(sparklyr)
+
+Attaching package: ‘sparklyr’
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+> library(tidyverse)
+── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+✔ ggplot2 3.4.1     ✔ purrr   1.0.1
+✔ tibble  3.1.8     ✔ dplyr   1.1.0
+✔ tidyr   1.3.0     ✔ stringr 1.5.0
+✔ readr   2.1.4     ✔ forcats 1.0.0
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks sparklyr::filter(), stats::filter()
+✖ purrr::invoke() masks sparklyr::invoke()
+✖ dplyr::lag()    masks stats::lag()
+> 
+> ## connection to spark
+> spark_install(version = "3.0.0")
+> sc <- spark_connect(master = "local")
+> 
+> ##df1 tibble for iris data
+> df1 <- as_tibble(iris)
+> 
+> ##copy to spark
+> df <- copy_to(sc, df1)
+> 
+> ##data type-- what was the type of each (.tex file)
+> class(df1)
+[1] "tbl_df"     "tbl"        "data.frame"
+> class(df)
+[1] "tbl_spark" "tbl_sql"   "tbl_lazy"  "tbl"      
+> 
+> ## column name comparison (in .tex file)
+> colnames(df1)
+[1] "Sepal.Length" "Sepal.Width"  "Petal.Length" "Petal.Width"  "Species"     
+> colnames(df) 
+[1] "Sepal_Length" "Sepal_Width"  "Petal_Length" "Petal_Width"  "Species"     
+> 
+> ## RDD operation: select
+> df %>% select(Sepal_Length, Species) %>% head %>% print
+# Source: spark<?> [?? x 2]
+  Sepal_Length Species
+         <dbl> <chr>  
+1          5.1 setosa 
+2          4.9 setosa 
+3          4.7 setosa 
+4          4.6 setosa 
+5          5   setosa 
+6          5.4 setosa 
+> 
+> ## RDD operation: filter
+> df %>% filter(Sepal_Length>5.5) %>% head %>% print
+# Source: spark<?> [?? x 5]
+  Sepal_Length Sepal_Width Petal_Length Petal_Width Species   
+         <dbl>       <dbl>        <dbl>       <dbl> <chr>     
+1          5.8         4            1.2         0.2 setosa    
+2          5.7         4.4          1.5         0.4 setosa    
+3          5.7         3.8          1.7         0.3 setosa    
+4          7           3.2          4.7         1.4 versicolor
+5          6.4         3.2          4.5         1.5 versicolor
+6          6.9         3.1          4.9         1.5 versicolor
+> 
+> ## combine select and filter
+> df %>% select(Sepal_Length, Species) %>% filter(Sepal_Length>5.5) %>% head %>% print
+# Source: spark<?> [?? x 2]
+  Sepal_Length Species   
+         <dbl> <chr>     
+1          5.8 setosa    
+2          5.7 setosa    
+3          5.7 setosa    
+4          7   versicolor
+5          6.4 versicolor
+6          6.9 versicolor
+> 
+> ## RDD operation: groupby
+> df2 <- df %>% group_by(Species) %>% summarize(mean = mean(Sepal_Length),count = n()) %>% head %>% print
+# Source: spark<?> [?? x 3]
+  Species     mean count
+  <chr>      <dbl> <dbl>
+1 virginica   6.59    50
+2 versicolor  5.94    50
+3 setosa      5.01    50
+Warning message:
+Missing values are always removed in SQL aggregation functions.
+Use `na.rm = TRUE` to silence this warning
+This warning is displayed once every 8 hours. 
+> 
+> ## RDD operation: sort
+> df2 %>% arrange(Species) %>% head %>% print
+Error in `new_data_frame()`:
+! `n` must be an integer of size 1.
+Backtrace:
+    ▆
+ 1. ├─df2 %>% arrange(Species) %>% head %>% print
+ 2. ├─base::print(.)
+ 3. ├─utils::head(.)
+ 4. ├─dplyr::arrange(., Species)
+ 5. ├─dplyr:::arrange.data.frame(., Species)
+ 6. │ └─dplyr:::arrange_rows(.data, dots = dots, locale = .locale)
+ 7. │   └─vctrs::new_data_frame(data, n = size)
+ 8. └─rlang::abort(message = message)
+Execution halted
