@@ -1,0 +1,27 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\title{Problem Set 5}
+\author{Ana Gallart}
+\date{March 6, 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{Question 3: data without API}
+
+I chose to look at the viewership, rating, and ad price of the Grammy Awards between 1974-2023 from the Grammy Awards Wikipedia page. I just thought this would be interesting since they were just about a month ago, so it was still on the brain. I wanted to see if the viewership has increased noticeably and how the ratings have done. This data won't be necessarily useful parse in the future, it was just fun to look at. I used the method from class to find the CSS selector for the table in the page source and just copied it into my R script. 
+
+The first year with ad price data was 1986 logging at 205,500 USD (~560,943.75USD today according to an online inflation calculator), the most recent data point was 2016 coming at 1.2million USD (~1,495,806.37 USD today). For the most part, viewership has stayed within the same range of ~20-30ish million throughout the years. However, the past three years it really has fallen: 9.23M in 2021, 9.59M in 2022 and 12.55M in 2023.
+
+\section{Question 4: data with API}
+\subsection{FRED- Total Vehicle Sales}
+It was expected, but still interesting, to see the big dip in the first half of 2020, at its lowest in April. Also interesting to see we are a few million below the pre-pandemic car sales, but going up, so it might recover soon. The 2020 drop was slightly lower than the one in late 2008/early 2009, which I found interesting. This data is helpful in that I am going to work in AutoFinance for a bank after graduation, so it's a cool baseline/background information to know. 
+
+
+\subsection{Yahoo Finance - Car manufacturer returns}
+I was interested in looking at the returns of several car manufacturers after finding the FRED data of total vehicle sales. More specifically, looking at 2019-present. Honestly looking at the returns, they are very similar throughout, no one firm is doing better than its competitors. This was valuable to see to know that it was the vehicle market as a whole experiencing the effects of the pandemic equally, not just a few firms. This indicated that as the market improves, all the firms will likely get equally higher returns. 
+
+
+\end{document}
