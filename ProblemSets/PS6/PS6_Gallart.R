@@ -27,27 +27,41 @@ head(PI_CE)
 library(ggplot2)
 
 ## the whole range of data
-ggplot(PI_CE, aes(x = Date)) +
+PI_CE_whole <- ggplot(PI_CE, aes(x = Date)) +
   geom_line(aes(y = `Personal_Income`, color = "Personal Income")) +
   geom_line(aes(y = `Personal_Consumption_Expenditures`, color = "Personal Consumption Expenditures")) +
   scale_color_manual(values = c("Personal Income" = "blue", "Personal Consumption Expenditures" = "red")) +
   labs(x = "Date", y = "Billions of dollars", title = "Personal Income and Personal Consumption Expenditures") +
-  theme_minimal() + guides(color= "none") +
+  theme_bw() + guides(color= "none") +
   geom_text(aes(x = as.Date("1997-04-01"), y = 12000, label = "Personal Income", color = "Personal Income"), size = 3) +
   geom_text(aes(x = as.Date("2010-01-01"), y = 4500, label = "Personal Consumption Expenditures", color = "Personal Consumption Expenditures"), size=3)
 
+PI_CE_whole  
+
+# save it
+ggsave("PS6a_Gallart.png", plot = PI_CE_whole, width = 8, height = 6, dpi = 300)
+
+
 ## 2019- 2023 data, want to see the impacts and recovery of pandemic
-ggplot(PI_CE, aes(x = Date)) +
+PI_CE_pan <- ggplot(PI_CE, aes(x = Date)) +
   geom_line(aes(y = `Personal_Income`, color = "Personal Income")) +
   geom_line(aes(y = `Personal_Consumption_Expenditures`, color = "Personal Consumption Expenditures")) +
   scale_color_manual(values = c("Personal Income" = "blue", "Personal Consumption Expenditures" = "red")) +
   labs(x = "Date", y = "Billions of dollars", title = "Personal Income and Personal Consumption Expenditures") +
-  theme_minimal() + guides(color= "none") +
+  theme_bw() + guides(color= "none") +
   geom_text(aes(x = as.Date("2022-04-01"), y = 19500, label = "Personal Income", color = "Personal Income"), size = 3) +
   geom_text(aes(x = as.Date("2021-10-01"), y = 13000, label = "Personal Consumption Expenditures", color = "Personal Consumption Expenditures"), size=3) +
   xlim(as.Date("2019-01-01"), as.Date("2023-01-01")) +
   geom_vline(xintercept = seq(as.Date("2019-01-01"), as.Date("2023-01-01"), by = "quarter"), color = "gray90") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+PI_CE_pan
+
+# save it
+ggsave("PS6b_Gallart.png", plot = PI_CE_pan, width = 8, height = 6, dpi = 300)
+
+
 
 
 ## difference between income and consumption expenditure
@@ -56,9 +70,14 @@ ggplot(PI_CE, aes(x = Date)) +
 PI_CE$Difference <- PI_CE$Personal_Income - PI_CE$Personal_Consumption_Expenditures
 
 ### Plot the difference over time using ggplot2
-ggplot(PI_CE, aes(x = Date, y = Difference)) +
+PI_CE_diff <- ggplot(PI_CE, aes(x = Date, y = Difference)) +
   geom_line() +
   labs(x = "Date", y = "Billions of dollars", title = "Difference between Personal Income and Personal Consumption Expenditures") +
-  theme_minimal()
+  theme_bw()
 
+
+PI_CE_diff
+
+# save it
+ggsave("PS6c_Gallart.png", plot = PI_CE_diff, width = 8, height = 6, dpi = 300)
 
