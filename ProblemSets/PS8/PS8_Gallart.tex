@@ -1,0 +1,89 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\newcolumntype{d}{S[
+    input-open-uncertainty=,
+    input-close-uncertainty=,
+    parse-numbers = false,
+    table-align-text-pre=false,
+    table-align-text-post=false
+ ]}
+
+
+\title{Problem Set 8}
+\author{Ana Gallart}
+
+\begin{document}
+
+\maketitle
+
+\section{Overall Estimate comparison}
+The original/ true $\beta$ was [1.5, -1, -0.25, 0.75, 3.5, -2, 0.5, 1, 1.25, 2]
+The OLS estimate was very close with values of about  0.001 off of the true values. The OLS using Gradient Descent had beta hats that were even closer to the true values than the first OLS estimate. OLS using nloptr's L-BFGS algorithm seems to give estimates very close to the OLS estimate, but with rounded values, which I'm sure can be adjusted but does diminish some of the closeness. OLS using nloptr's Nelder-Mead algorithm seems to give values in between OLS estimate and OLS using nloptr's L-BFGS. Finally, MLE seems to be very similar to the OLS using L-BFGS. All of the estimates seemed to give realtively close values to the true betas.
+
+
+\subsection{5}
+the values of this estimate are very close to the true values of beta, off by approx 0.01
+
+\subsection{7c}
+Yes answers differ, only by around 0.0000x on average...overall it seems that Nelder-Mead has more decimal places
+
+
+\section{Question 9}
+On the next page is the modelsummary output from question 9.
+
+ 
+\begin{table}
+\centering
+\begin{tabular}[h]{lc}
+\toprule
+  & (1)\\
+\midrule
+X1 & \num{1.500}\\
+ & (\num{0.001})\\
+X2 & \num{-0.996}\\
+ & \vphantom{8} (\num{0.002})\\
+X3 & \num{-0.249}\\
+ & \vphantom{7} (\num{0.002})\\
+X4 & \num{0.747}\\
+ & \vphantom{6} (\num{0.002})\\
+X5 & \num{3.502}\\
+ & \vphantom{5} (\num{0.002})\\
+X6 & \num{-1.999}\\
+ & \vphantom{4} (\num{0.002})\\
+X7 & \num{0.501}\\
+ & \vphantom{3} (\num{0.002})\\
+X8 & \num{0.999}\\
+ & \vphantom{2} (\num{0.002})\\
+X9 & \num{1.253}\\
+ & \vphantom{1} (\num{0.002})\\
+X10 & \num{1.999}\\
+ & (\num{0.002})\\
+\midrule
+Num.Obs. & \num{1e+05}\\
+R2 & \num{0.993}\\
+R2 Adj. & \num{0.993}\\
+AIC & \num{6363.8}\\
+BIC & \num{6468.4}\\
+Log.Lik. & \num{-3170.897}\\
+RMSE & \num{0.25}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\end{document}

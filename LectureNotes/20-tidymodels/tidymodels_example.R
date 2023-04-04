@@ -5,8 +5,11 @@ library(glmnet)
 
 set.seed(123456)
 
+# go to this url and grab the housing data
 housing <- read_table("http://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data", col_names = FALSE)
+# manually add the names to the columns 
 names(housing) <- c("crim","zn","indus","chas","nox","rm","age","dis","rad","tax","ptratio","b","lstat","medv")
+
 
 # From UC Irvine's website (http://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.names)
 #    1. CRIM      per capita crime rate by town
@@ -24,6 +27,7 @@ names(housing) <- c("crim","zn","indus","chas","nox","rm","age","dis","rad","tax
 #    13. LSTAT    lower status of the population
 #    14. MEDV     Median value of owner-occupied homes in $1000's
 
+# median value is our Y VALUE
 
 housing_split <- initial_split(housing, prop = 0.8)
 housing_train <- training(housing_split)
@@ -51,6 +55,7 @@ housing_test_x  <- housing_test_prepped  %>% select(-medv)
 housing_train_y <- housing_train_prepped %>% select( medv)
 housing_test_y  <- housing_test_prepped  %>% select( medv)
 
+### OLS
 # Fit the regression model
 est.ols <- lm(housing_train_y$medv ~ ., data = housing_train_x)
 # Predict outcome for the test data
@@ -69,7 +74,7 @@ ols_easy_predicted <- predict(est.ols.easy, newdata = housing_test)
 # Root mean-squared error
 sqrt(mean((housing_test_y$medv - ols_easy_predicted)^2))
 
-
+# PARSNIP CODE OLS
 ols_spec <- linear_reg() %>%       # Specify a model
   set_engine("lm") %>%   # Specify an engine: lm, glmnet, stan, keras, spark
   set_mode("regression") # Declare a mode: regression or classification
@@ -110,12 +115,12 @@ ols_fit %>% predict(housing_test_prepped) %>%
             rsq_trad(truth,`.pred`) %>%
             print
 # in-sample R^2 was 0.814
-# out-of-sample R^2 is 0.764
+# out-of-sample R^2 is 0.764 #### smalleer out of sample, would expect it to be bigger than in-sample
 
 
 
-
-# now do lasso where we set the penalty
+##NOW WITH LASSO INSTEAD OF OLS
+# now do LASSO where we set the penalty
 lasso_spec <- linear_reg(penalty=0.5,mixture=1) %>%       # Specify a model
   set_engine("glmnet") %>%   # Specify an engine: lm, glmnet, stan, keras, spark
   set_mode("regression") # Declare a mode: regression or classification
