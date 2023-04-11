@@ -1,0 +1,53 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\title{Problem Set 9}
+\author{Ana Gallart}
+\date{April 11 2023}
+
+\begin{document}
+
+\maketitle
+
+\begin{itemize}
+    \item {Question 7}  
+    
+How many more X variables do you have than in the original housing data? 
+
+dim(housing) -- 506 by 14
+
+dim(housing train) -- 404 by 14
+
+dim(housing train x) -- 404 by 74, 60more x variables 
+
+dim(housing train y) -- 404 by 1
+
+\item{Question 8}
+
+What is the optimal value of $\lambda$? 0.0.00139 or 0.00910
+
+What is the in-sample (train data) RMSE? 0.170
+
+What is the out-of-sample (test data) RMSE? 0.180
+
+\item{Question 9}
+
+What is the optimal value of $\lambda$? 0.0000000001
+
+What is the in-sample (train data) RMSE? 0.173
+
+What is the out-of-sample (test data) RMSE? 0.173
+
+Not sure why the in-sample and out-of-sample came out the same... probably an error somewhere. I tried to find it but couldn't.
+
+\item{Question 10}
+
+Would you be
+able to estimate a simple linear regression model on a data set that had more columns
+than rows? Using the RMSE values of each of the tuned models in the previous two questions, comment on where your model stands in terms of the bias-variance tradeoff.
+
+We could fit a SLR model on dataset with more columns than rows, but it's overfit the model to have more features than observations. I think the model is in good standing for the bias-variance tradeoff. SInce the RMSE is relatively low for the models (less than 0.2) it doesnt have high bias, but since it isn't near zero it doesn't have no bias and thus high variance. 
+
+\end{itemize}
+
+\end{document}
