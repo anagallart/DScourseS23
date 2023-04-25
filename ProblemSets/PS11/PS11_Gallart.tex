@@ -1,0 +1,161 @@
+\documentclass[12pt,english]{article}
+\usepackage{mathptmx}
+
+\usepackage{color}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{darkblue}{RGB}{0.,0.,139.}
+
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage{setspace}
+\usepackage{lipsum}
+
+\usepackage[authoryear]{natbib}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage[flushleft]{threeparttable}
+\usepackage{graphicx}
+\usepackage[english]{babel}
+\usepackage{pdflscape}
+\usepackage[unicode=true,pdfusetitle,
+ bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
+ breaklinks=true,pdfborder={0 0 0},backref=false,
+ colorlinks,citecolor=black,filecolor=black,
+ linkcolor=black,urlcolor=black]
+ {hyperref}
+\usepackage[all]{hypcap} % Links point to top of image, builds on hyperref
+\usepackage{breakurl}    % Allows urls to wrap, including hyperref
+
+\linespread{2}
+
+\begin{document}
+
+\begin{singlespace}
+\title{Food Insecurity and Socioeconomic Factors}
+\end{singlespace}
+
+\author{Ana Gallart\thanks{Department of Economics, University of Oklahoma.\
+E-mail~address:~\href{mailto:ana.gallart@ou.edu}{ana.gallart@ou.edu}}}
+
+% \date{\today}
+\date{April 23, 2023}
+
+\maketitle
+
+\begin{abstract}
+\begin{singlespace}
+Food insecurity is a pervasive issue, and a large driving force of this issue is often socioeconomic factors. Using data from the US Census Bureau's Current Population Survey including its Food Security Supplement. This project will analyze how different socioeconomic and demographic factors impact the survey responses that track with food insecurity. The goal is to determine which factors have the largest impact in people indicating they have struggled with food security.
+
+\end{singlespace}
+
+\end{abstract}
+\vfill{}
+
+
+\pagebreak{}
+
+
+\section{Introduction}\label{sec:intro}
+Food insecurity continues to be an issue for people in the United States. Food insecurity is defined by the USDA as "an inability or limitation in accessing nutritional adequate foods" [Walker] \citet{WalkerRebekahJ}.  There are certain demographic factors that may increase someone's likelihood of being food insecure. Identifying those at higher risks and understanding food insecurity could help create policies that combat poverty levels as well. There is bidirectional causality between poverty and food insecurity. Clearly, those who are in poverty have less access to food since they have financial limitations. Not being well fed and worrying about affording food causes anxiety and stress that further decreases quality of life and contributes to continued poverty. The goal of this is to analyze if there have been any changes in more recent levels of food insecurity since I couldn't find any fairly recent analysis. The reason I wonder if there were any changes is because this is after fairly stabilizing after the economic shock of the COVID-19 pandemic.
+
+- expand on it, more facts/ numbers may be good 
+
+\section{Literature Review}\label{sec:litreview}
+This is just an overview of my current sources. I thought it best to keep it divided by source for now.
+
+\citet{AlaimoK1998Fiei}
+AlaimoK1998Fiei
+
+- Uses National Health And Nutrition Examination Survey (NHANES) III data to conduct a logistic regression of family (household) demographic and socioeconomic variables, income, health insurance coverage, and employment.
+
+- In 1988-1994, 4.1 percent of the US (9-12 million) were food insecure, in this study defined as reporting to often or sometimes not getting enough to eat. 
+
+
+\citet{NordMark2014PoUf}
+NordMark2014PoUf
+
+- Explains changes in food insecurity in the US as affected by "national unemployment rate, inflation, and price of food relative to other goods and services." (macroeconomic changes influence food insecurity)
+
+- These three measures accounted for 92 percent of the annual change in food insecurity from 2001-2012
+
+- Used the Current Population Survey Food Security Supplement and US Bureau of Labor Statistics for the three macro variables. 
+
+- Findings: single parents, households with no elderly, households with black, Hispanic, American Indian, or Alaska Native, lower education, in larger cities, and households with adults working part-time or unemployed were more likely to be food insecure. 
+
+\citet{RoseDonald1998SDoF}
+RoseDonald1998SDoF
+
+- This uses data from the 1992 Survey of Income and Program Participation. 
+
+- Multivariate logit model found that higher incomes, homeowners, graduating college, and with elderly present are less likely to be food insecure
+
+- Makes a good point that income alone does not accurately predict food security since it doesn't factor in the uniqueness of households and needs or the difference in prices and affordability based on location.
+
+\citet{WalkerRebekahJ}
+WalkerRebekahJ
+
+- Food insecurity in the US doubled between 2005 and 2012, so it is an important topic to understand to ensure that policy making for supplemental programs is benefiting those who need it the most. 
+
+- "Individuals who are food insecure report concerns that include anxiety surrounding food insufficiency, the need to make food budget adjustments throughout the month, alterations in the types of food obtained, and the need to reduce food intake."
+
+- Young, racial/ethic minority females with lower educational or socioeconomic status tend to be more likely to report food insecurity.
+
+- Policymakers should take into account that there are often barriers that prevent those who qualify for federal programs from benefiting from them. These barriers are often associated with the socioeconomic backgrounds of people who are more likely to experience food insecurity, such as lack of transportation, logistical inability to take time off, responsibility of taking care of a child or finding child care, and not being able to financially forego missing work. 
+
+- Studied 7 years of data (2011-2017) from National Health Interview Survey (NHIS). Used demographic variables: age, sex, race, income as a ratio to the federal poverty level
+
+- Conducted a series of logistic regressions, including one adjusted for the survey year
+
+- Found that 10.56 percent of households reported food insecurity. People over 65 years old accounted for 11 percent of those who reported food insecurity. More than 65 percent were female, nearly 53 percent were non-Hispanic white and over 41 percent were below the federal poverty level.
+
+
+\citet{WarsawPhillip;PhaneufDanielJ.2019TIPo}
+WarsawPhillip;PhaneufDanielJ.2019TIPo
+
+- Researches and explains how home prices reflect food access. Viewing access to grocery stores as an amenity makes being food secure more difficult for those experiencing poverty. 
+
+- Those who have lower socioeconomic status have to pay more to gain access to food (in transportation and other costs) since they may not be able to afford to be near main grocery stores. 
+
+- Case study data from Milwaukee, Wisconsin since it has similarities to other urban Midwestern cities and "has significant racial segregation".
+
+
+
+\section{Data}\label{sec:data}
+The data source for this research is the US Census Bureau Current Population Survey from December 2021 with the Food Security Supplement. The Current Population Survey has been conducted monthly for the past 60 years. The sample is scientifically taken to proportionally represent the US and the states and regions. The primary goal of the survey is to learn about employment status, but it also collects a variety of demographic factors that will be useful for the research. 
+
+Considered food insecure if 3+ responses indicated so.
+Very low food security if 6+ responses indicated so.
+
+I cleaned the data by filtering by those who were civilian adults (over 15 years old) and were interviewed for both the Current Population Survey and the Food Security Supplement, this cut the sample from 127,489 to 58,767. Then I removed entries of those who didn't respond to or said "don't know" to the main food security questions. I did this to ensure that the model was not being influenced by neutrals or missing information. I kept 17 of the Food Security Supplement questions as there were some I chose not to include because dropping the non-response resulted in a large loss of data. I also chose to keep 18 socioeconomic and demographic variables, which I did not filter by response. I decided to join variables with many different responses into smaller categories, like the race variable that initially had 26 possible responses. 
+
+
+\section{Empirical Methods}\label{sec:methods}
+
+While this might not be the final model, currently I am thinking of using a model that uses the inputs of the socioeconomic factors: age, sex, household tenure, household income, marital status, geographic region, highest education level, race, employment, and citizenship status, and will output a level of food security based on the count of responses to the selected Food Security Supplement that indicate/ tracks with food insecurity. 
+
+To be honest, I have been overwhelmingly busy these past weeks and I haven't had the time to dedicate enough time to finalizing my model. I have been thinking about it a lot though and am working on improving/increasing my bandwidth. 
+
+\section{Research Findings}\label{sec:results}
+This is still a work in progress
+
+\section{Conclusion}\label{sec:conclusion}
+Not ready at this moment
+
+\vfill
+\pagebreak{}
+\begin{spacing}{1.0}
+\bibliographystyle{jpe}
+\bibliography{PS11_Gallart.bib}
+\addcontentsline{toc}{section}{References}
+\end{spacing}
+
+\vfill
+\pagebreak{}
+\clearpage
+
+
+
+\end{document}
